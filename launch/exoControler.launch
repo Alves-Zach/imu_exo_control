@@ -1,0 +1,28 @@
+<launch>
+    <!-- Params -->
+    <arg name="robot_description_name" default="x2/robot_description"/>
+    <arg name="robot_name" default="X2_SRA_A"/>
+    <arg name="gui" default="true"/>
+    
+    <param name="$(arg robot_description_name)" command="$(find xacro)/xacro '$(find x2_description)/urdf/x2_fixed_base.urdf.xacro'"/>
+        
+    <!-- Launching the trigno joint reader -->
+    <node name="trigno_joint_reader" pkg="imu_exo_control" type="trignoJointReader.py" output="screen">
+            <remap from="/joint_states" to="/$(arg robot_name)/joint_states" />
+    </node>
+
+    <!-- Launching the multi robot interaction node -->
+    <node name="x2_dyad" pkg="multi_robot_interaction" type="multi_robot_interaction" output="screen">
+        <rosparam command="load" file="$(find multi_robot_interaction)/param/robot_params.yaml" />
+        <remap from="/custom_robot_state" to="/$(arg robot_name)/custom_robot_state" />
+        <remap from="/desired_interaction_torque" to="/$(arg robot_name)/desired_interaction_torque" />
+    </node>
+    
+    <!-- Launching the emg reader node -->
+    <node name="emg_reader" pkg="imu_exo_control" type="emgReader.py" output="screen"/>
+
+    <!-- rqt_gui -->
+    <group if="$(arg gui)">
+        <node name="$(arg robot_name)_rqt_gui" pkg="rqt_gui" type="rqt_gui" args = "--perspective-file $(find imu_exo_control)/config/x2.perspective"/>
+    </group>
+</launch>
