@@ -9,7 +9,7 @@ from std_msgs.msg import Float32MultiArray
 from sensor_msgs.msg import JointState
 from trigno_msgs.msg import trignoMultiEMG, trignoEMG
 from std_srvs.srv import Empty, EmptyResponse
-from CORC.cfg import EMGReaderConfig
+from imu_exo_control.cfg import EMGReaderConfig
 
 #*--------------------- Dynamic reconfigurable variables --------------------- #
 # Length of time in seconds to calibrate the EMG
@@ -18,7 +18,7 @@ calibrationPeriodDyn = 30
 # Number of readings to use for the moving window
 windowSizeDyn = 500
 
-# The number of readings to use for teh averaging window for muscle activation
+# The number of readings to use for the averaging window for muscle activation
 muscleActivationWindowSizeDyn = 30
 
 # Variable to change the method used to calculate stiffness

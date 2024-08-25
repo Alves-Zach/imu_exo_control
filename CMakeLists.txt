@@ -98,23 +98,13 @@ find_package(catkin REQUIRED)
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
-catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES imu_exo_control
-#  CATKIN_DEPENDS other_catkin_pkg
-#  DEPENDS system_lib
-)
+
 
 ###########
 ## Build ##
 ###########
 
-## Specify additional locations of header files
-## Your package locations should be listed before other locations
-include_directories(
-# include
-# ${catkin_INCLUDE_DIRS}
-)
+set(USE_ROS ON)
 
 ## Add ROS dependencies
 if(USE_ROS)
@@ -149,25 +139,6 @@ if(USE_ROS)
 
 		generate_dynamic_reconfigure_options(
                 config/EMGReader.cfg
-		)
-
-		add_message_files(
-				FILES
-				X2Array.msg
-				X2Acceleration.msg
-				X2AccelerationMerge.msg
-				X2PressurePad.msg
-				X2StanceInterpolation.msg
-				X2RobotState.msg
-				InteractionArray.msg
-		)
-
-		generate_messages(
-				DEPENDENCIES
-				std_msgs
-				sensor_msgs
-				geometry_msgs
-				trigno_msgs
 		)
 
 		catkin_package(
