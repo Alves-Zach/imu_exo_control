@@ -23,6 +23,6 @@
 
     <!-- rqt_gui -->
     <group if="$(arg gui)">
-        <node name="$(arg robot_name)_rqt_gui" pkg="rqt_gui" type="rqt_gui" args = "--perspective-file $(find imu_exo_control)/config/x2.perspective"/>
+        <node name="$(arg robot_name)_rqt_gui" pkg="rqt_gui" type="rqt_gui" args = "--perspective-file $(find CORC)/config/x2.perspective"/>
     </group>
 </launch>
