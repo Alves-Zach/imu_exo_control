@@ -1,7 +1,20 @@
 # Masters of Robotics capstone project
 Author: Zachary Alves
 
-This project is an extension of the work of Emek Barış Küçüktabak. I have extended the functionality to accept joint state data from trigno IMU/EMG sensors. The joint state values calculated from the IMU sensors are used as the set points for the exoskeleton controller and the EMG values are used to augment the proportional gain of the controller based on the amount the user is flexing.
+[Portfolio post](https://alves-zach.github.io/projects/01Exoskeleton/)
+
+This project is an extension of the work of [Emek Barış Küçüktabak](https://github.com/emekBaris). I have extended the functionality to accept joint state data from trigno IMU/EMG sensors. The joint state values calculated from the IMU sensors are used as the set points for the exoskeleton controller and the EMG values are used to augment the proportional gain of the controller based on the amount the user is flexing.
+
+[Link to Emek's paper](https://arxiv.org/pdf/2307.06479)
+
+Repositories used:
+
+[multirobot_interaction](https://github.com/emekBaris/multi_robot_interaction)\
+[CANOpenRobotController](https://github.com/emekBaris/CANOpenRobotController)\
+[trigno_capture](https://github.com/emekBaris/trigno_capture)\
+[trigno_msgs](https://github.com/emekBaris/trigno_msgs)
+
+Some of these repositories are private and the link may not work correctly
 
 ## Nodes overview
 

@@ -32,7 +32,7 @@ muscleToEMG = {0: 0, 1: 1, 2: 6, 3: 3, 4: 4, 5: 7}
 
 #* ----------------------------- Global Variables ----------------------------- #
 # Current joint state data from the IMUs
-jointStateData = None
+jointStateData = JointState()
 
 # A toggle to go from publishing muscle activation to recording the max EMG reading
 calibratingEMG = False
@@ -62,7 +62,7 @@ lastValidStiffnessArray = np.array([0.0, 0.0, 0.0, 0.0])
 rospack = RosPack()
 
 # Get the location of the package
-packagePath = rospack.get_path('CORC')
+packagePath = rospack.get_path('imu_exo_control')
 
 # Get the location of the EMG calibration yaml file
 muscleActivationCalibrationFile = packagePath + '/config/muscleActivationConfig.yaml'

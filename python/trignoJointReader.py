@@ -109,27 +109,9 @@ def getSagittalAngle(imuData: List[trignoIMU], curReading: int):
         # Rotating the transforms of the sensors on the back of the leg
         if imuData.imu_id % 2 == 0:
             sagittalAngle = np.arcsin(-RAB[2, 2])
-    elif numSensors == 5:
-        if imuData.imu_id == 2 or imuData.imu_id == 4:
-            # RAB(thigh) * RAB(calf).T = RAB(thigh-calf)
-            RAB = RABlist[imuData.imu_id - 2] * RAB.T
-
-            # Get the sagittal angle from the rotation matrix
-            sagittalAngle = -np.arcsin(RAB[2, 2])
-        else:
-            # Getting the sagittal angle from the rotation matrix
-            sagittalAngle = np.arcsin(RAB[2, 2])
-
-    # Updating the angle if the IMU is on the back of the leg
-    # if imuData.imu_id == 5:
-    #     sagittalAngle = -sagittalAngle + np.pi
 
     # Store the rotation matrix in the list for future use
-    # RABlist[imuData.imu_id - 1] = RAB
     RABlist[imuData.imu_id - 1] = 1
-
-    # Manually setting the RABlist[5] to 1 because that sensor didn't work
-    # RABlist[5] = 1
 
     return sagittalAngle
 
@@ -180,17 +162,6 @@ def imu_callback(IMUDataList: trignoMultiIMU):
         orderedIMUList = [IMUDataList.trigno_imu[0], IMUDataList.trigno_imu[1], IMUDataList.trigno_imu[2],
                             IMUDataList.trigno_imu[3], IMUDataList.trigno_imu[4], IMUDataList.trigno_imu[5],
                             IMUDataList.trigno_imu[6], IMUDataList.trigno_imu[7]]
-    elif (len(IMUDataList.trigno_imu) == 5):
-        orderedIMUList = [IMUDataList.trigno_imu[4], # Back
-                            IMUDataList.trigno_imu[0], IMUDataList.trigno_imu[2], # Thighs
-                            IMUDataList.trigno_imu[1], IMUDataList.trigno_imu[3]] # Calves
-    elif (len(IMUDataList.trigno_imu) == 4):
-        orderedIMUList = [IMUDataList.trigno_imu[0], IMUDataList.trigno_imu[2], # Thighs
-                            IMUDataList.trigno_imu[1], IMUDataList.trigno_imu[3]] # Calves
-    elif (len(IMUDataList.trigno_imu) == 1):
-        orderedIMUList = [IMUDataList.trigno_imu[0]] # Just the left shank sensor
-    elif (len(IMUDataList.trigno_imu) == 2):
-        orderedIMUList = [IMUDataList.trigno_imu[0], IMUDataList.trigno_imu[1]]
 
     # Getting the number of readings in this packet
     numReadings = len(orderedIMUList[0].q)
