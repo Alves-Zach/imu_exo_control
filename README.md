@@ -9,10 +9,10 @@ This project is an extension of the work of [Emek Barış Küçüktabak](https:/
 
 Repositories used:
 
-[multirobot_interaction](https://github.com/emekBaris/multi_robot_interaction)\
-[CANOpenRobotController](https://github.com/emekBaris/CANOpenRobotController)\
-[trigno_capture](https://github.com/emekBaris/trigno_capture)\
-[trigno_msgs](https://github.com/emekBaris/trigno_msgs)
+[multirobot_interaction](https://github.com/Alves-Zach/multi_robot_interaction/tree/main) [main]\
+[CANOpenRobotController](https://github.com/emekBaris/CANOpenRobotController/tree/devel/targetVisualization) [devel/targetVisualization]\
+[trigno_capture](https://github.com/emekBaris/trigno_capture) [main]\
+[trigno_msgs](https://github.com/emekBaris/trigno_msgs) [main]
 
 Some of these repositories are private and the link may not work correctly
 
@@ -79,7 +79,7 @@ Above are the locations of the trigno sensors, each oval is one sensor, the colo
 &emsp; - `/X2_SRA_A/calibrate_force_sensors`\
 &emsp; - `/X2_SRA_A/start_homing` (This service will make each joint move forward one at a time to the joint limit, ensure the exo can freely move before calling this service)
 4. In X2_SRA_A section in rqt_gui ensure these options are selected\
-&emsp; - Controller mode 8 (TODO give the names of these modes rather than just the numbers)
+&emsp; - Controller mode 8
 &emsp; - Experiment mode 1
 &emsp; - Enable each motor with the corresponding check box
 5. Put on the exoskeleton
